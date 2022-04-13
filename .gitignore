@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+venv
+Lib
+Scripts
+pyvenv.cfg
+requirements.txt
+README.md
+
