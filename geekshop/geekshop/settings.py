@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# edit installed_apps
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -124,4 +125,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "geekshop", 'static'))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "geekshop", "static"))
