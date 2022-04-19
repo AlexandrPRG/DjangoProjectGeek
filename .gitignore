@@ -2,8 +2,10 @@
 venv
 Lib
 Scripts
+.idea
 
 pyvenv.cfg
 requirements.txt
 README.md
+.gitignore
 
