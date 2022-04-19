@@ -5,8 +5,9 @@
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/Lib" />
       <excludeFolder url="file://$MODULE_DIR$/Scripts" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.9 (1862) (2)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (1862) (3)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
