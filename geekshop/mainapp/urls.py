@@ -1,8 +1,6 @@
-from django.urls import path, include
-from .views import index, contacts
+from django.urls import path
+from .views import products
 
 urlpatterns = [
-    # path('', index),
-    path('contacts/', contacts),
-    path('', include('mainapp.urls'))
+    path('', products),
 ]
