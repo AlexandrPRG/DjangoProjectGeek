@@ -59,7 +59,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['geekshop/templates/',
-                 'mainapp/templates/'],
+                 # 'mainapp/templates/'
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
