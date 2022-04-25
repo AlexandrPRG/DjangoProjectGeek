@@ -8,4 +8,6 @@ pyvenv.cfg
 requirements.txt
 README.md
 .gitignore
+geekshop/mainapp/__init__.py
+
 
