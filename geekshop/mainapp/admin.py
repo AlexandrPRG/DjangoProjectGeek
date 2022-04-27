@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from geekshop.mainapp.models import ProductCategory
+from .models import ProductCategory
 
 admin.site.register(ProductCategory)
