@@ -14,4 +14,13 @@ class Product(models.Model):
         verbose_name='имя продукта',
         max_length=128,
         )
-    image = models.
+    image = models.ImageField(
+        upload_to='products_images',
+        blank=True
+        )
+    short_descript = models.CharField(
+        verbose_name='краткое описание',
+        max_length=60,
+        blank=True
+        )
+    description = models.TextField(verbose_name='описание', blank=True)
