@@ -7,3 +7,11 @@ class ProductCategory(models.Model):
 
     def __str__(self):
         return f'{self.id} - {self.name}'
+
+class Product(models.Model):
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    name = models.CharField(
+        verbose_name='имя продукта',
+        max_length=128,
+        )
+    image = models.
