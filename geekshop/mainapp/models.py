@@ -33,6 +33,10 @@ class Product(models.Model):
         decimal_places=2,
         default=0
         )
+    quantity = models.PositiveIntegerField(
+        verbose_name='количество',
+        default=0
+        )
 
     def __str__(self):
         return f'{self.name} - {self.category.name}'
