@@ -13,6 +13,6 @@ def products(request):
     context = {
         "links_menu_products": links_menu_products,
         "title": 'каталог',
-        "object": Product.objects.get(id=1)
+        "object": Product.objects.get(id=2)
     }
     return render(request, 'mainapp/products.html', context=context)
