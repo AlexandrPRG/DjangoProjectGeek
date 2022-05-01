@@ -6,7 +6,7 @@ from mainapp.models import Product
 
 
 def index(request):
-    product = Product.objects.all()[:3]
+    product = Product.objects.all()[:4]
     context = {
         'title': 'главная',
         'products': product,
