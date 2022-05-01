@@ -2,6 +2,11 @@ from django.shortcuts import render
 from .models import Product
 
 
+def product(request, pk):
+    print(pk)
+    return render(request)
+
+
 def products(request):
     links_menu_products = [
         {'href': '', 'name': 'все'},
