@@ -16,18 +16,20 @@
 		<div class="details">
 			<div class="links clearfix">
 				<ul class="links-menu">
-					<li><a href="#" class="active">все</a></li>
-					<li><a href="#">дом</a></li>
+					{% for link in links_menu_products %}
+					<li><a href="#" class="active">{{ link }}</a></li>
+					{% endfor %}
+<!--					<li><a href="#">дом</a></li>
 					<li><a href="#">офис</a></li>
 					<li><a href="#">модерн</a></li>
-					<li><a href="#">классика</a></li>
+					<li><a href="#">классика</a></li> -->
 				</ul>
 			</div>
 
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product">
-						<img src="/media/products_images/yablonya-antonovka.jpg">
+						<img src="/media/{{ products.images }}">
 						<img src="img/slider1.jpg">
 					</div>
 					<div class="slider-control">
@@ -73,7 +75,8 @@
 					<a class="explore" href="#">показать все <img src="img/arrow.png" alt=""></a>
 				</div>
 				<div class="related-products clearfix">
-
+					{% include 'geekshop/includes/short_list_products.html' %}
+<!--
 					{% for product in products %}
 					<div class="block">
 						<a href="#"><img src="/media/{{ product.image }}" alt="">
@@ -84,7 +87,7 @@
 							</div>
 						</a>
 					</div>
-					{% endfor %}
+					{% endfor %}-->
 					<div class="block">
 						<a href="#"><img src="img/product-31.jpg" alt="">
 							<div class="text">

@@ -11,7 +11,8 @@
 	<div class="container">
 		<div class="hero">
 			{% include 'geekshop/includes/link_menu.html' %}
-			<h1>наши контакты для {{ user|title }}</h1>
+
+			<h1>наши контакты для {{ user|capfirst }}</h1>
 		</div>
 
 		<div class="location">
@@ -66,7 +67,8 @@
 		</div>
 
 		<div class="clr"></div>
-	</div>	
+	</div>
+	{% include 'geekshop/includes/short_list_products.html' %}
 
 	{% include 'geekshop/includes/link_footer.html' %}
 			
