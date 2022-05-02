@@ -2,75 +2,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Контакты</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'geekshop/style.css' %}">
-	<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css">
+    <meta charset="utf-8">
+    <title>Контакты</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'geekshop/style.css' %}">
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css">
 </head>
 <body>
-	<div class="container">
-		<div class="hero">
-			{% include 'geekshop/includes/link_menu.html' %}
+<div class="container">
+    <div class="hero">
+        {% include 'geekshop/includes/link_menu.html' %}
 
-			<h1>наши контакты для {{ user|capfirst }}</h1>
-		</div>
+        <h1>наши контакты для {{ user|capfirst }}</h1>
+    </div>
 
-		<div class="location">
-			<div class="location-1">
-				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>Москва</h4>
-				<div class="contacts">
-					<h5>Телефон</h5>
-					<p>+7-888-888-8888</p>
-				</div>
-				<div class="contacts">
-					<h5>Email</h5>
-					<p>info@geekshop.ru</p>
-				</div>
-				<div class="contacts">
-					<h5>Адрес</h5>
-					<p>В пределах МКАД</p>
-				</div>
-			</div>
-			<div class="location-1">
-				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>Москва</h4>
-				<div class="contacts">
-					<h5>Телефон</h5>
-					<p>+7-888-888-8888</p>
-				</div>
-				<div class="contacts">
-					<h5>Email</h5>
-					<p>info@geekshop.ru</p>
-				</div>
-				<div class="contacts">
-					<h5>Адрес</h5>
-					<p>В пределах МКАД</p>
-				</div>
-			</div>
-			<div class="location-1">
-				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>Москва</h4>
-				<div class="contacts">
-					<h5>Телефон</h5>
-					<p>+7-888-888-8888</p>
-				</div>
-				<div class="contacts">
-					<h5>Email</h5>
-					<p>info@geekshop.ru</p>
-				</div>
-				<div class="contacts">
-					<h5>Адрес</h5>
-					<p>В пределах МКАД</p>
-				</div>
-			</div>
-		</div>
+    <div class="location">
+        <div class="location-1">
+            <i class="fa fa-map-marker fa-5x"></i>
+            <h4>Москва</h4>
+            <div class="contacts">
+                <h5>Телефон</h5>
+                <p>+7-888-888-8888</p>
+            </div>
+            <div class="contacts">
+                <h5>Email</h5>
+                <p>info@geekshop.ru</p>
+            </div>
+            <div class="contacts">
+                <h5>Адрес</h5>
+                <p>В пределах МКАД</p>
+            </div>
+        </div>
+        <div class="location-1">
+            <i class="fa fa-map-marker fa-5x"></i>
+            <h4>Москва</h4>
+            <div class="contacts">
+                <h5>Телефон</h5>
+                <p>+7-888-888-8888</p>
+            </div>
+            <div class="contacts">
+                <h5>Email</h5>
+                <p>info@geekshop.ru</p>
+            </div>
+            <div class="contacts">
+                <h5>Адрес</h5>
+                <p>В пределах МКАД</p>
+            </div>
+        </div>
+        <div class="location-1">
+            <i class="fa fa-map-marker fa-5x"></i>
+            <h4>Москва</h4>
+            <div class="contacts">
+                <h5>Телефон</h5>
+                <p>+7-888-888-8888</p>
+            </div>
+            <div class="contacts">
+                <h5>Email</h5>
+                <p>info@geekshop.ru</p>
+            </div>
+            <div class="contacts">
+                <h5>Адрес</h5>
+                <p>В пределах МКАД</p>
+            </div>
+        </div>
+    </div>
 
-		<div class="clr"></div>
-	</div>
-	{% include 'geekshop/includes/short_list_products.html' %}
+    <div class="clr"></div>
+</div>
+{% include 'geekshop/includes/short_list_products.html' %}
 
-	{% include 'geekshop/includes/link_footer.html' %}
-			
+{% include 'geekshop/includes/link_footer.html' %}
+
 </body>
 </html>
