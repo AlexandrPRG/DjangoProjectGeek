@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import authapp.models
+# import authapp.models
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'authapp',
 ]
 
-# AUTH_USER_MODEL = "authapp.ShopUser"    #'authapp.models.ShopUser'
+AUTH_USER_MODEL = "authapp.ShopUser"    #'authapp.models.ShopUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
