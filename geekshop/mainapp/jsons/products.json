@@ -1,6 +1,6 @@
 [
   {
-      "category": 2,
+      "category": 270,
       "name": "comfort",
       "image": "products_images/comfort_-_ёЄєы.jpg",
       "short_descript": "",
@@ -9,7 +9,7 @@
       "quantity": 10
   },
   {
-      "category": 3,
+      "category": 271,
       "name": "ырьяр-ёЇхЁр",
       "image": "products_images/ырьяр-ёЇхЁр_-.jpg",
       "short_descript": "єэшъры№э√щ фшчрщэ",
@@ -18,7 +18,7 @@
       "quantity": 32
   },
   {
-      "category": 4,
+      "category": 272,
       "name": "ъЁхёыр фтющър",
       "image": "products_images/ъЁхёыр_фтющър_-_ъЁхёыр.jpg",
       "short_descript": "єфюсэюх ъЁхёыю",
@@ -27,7 +27,7 @@
       "quantity": 0
   },
   {
-      "category": 3,
+      "category": 273,
       "name": "эрёЄхээр ",
       "image": "products_images/эрёЄхээр _-_ырья.jpg",
       "short_descript": "єэшъры№э√щ фшчрщэ",
@@ -36,7 +36,7 @@
       "quantity": 20
   },
   {
-      "category": 3,
+      "category": 272,
       "name": "эрёЄы№эр ",
       "image": "products_images/эрёЄюы№эр  ы_KDxIu5b.jpg",
       "short_descript": " Ёър ",
@@ -45,7 +45,7 @@
       "quantity": 20
   },
   {
-      "category": 5,
+      "category": 271,
       "name": "фштрэ фы  тёхї",
       "image": "products_images/sofaforall_T2GrGRD.jpg",
       "short_descript": "23000",
