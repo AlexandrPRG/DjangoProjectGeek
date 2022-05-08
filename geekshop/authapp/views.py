@@ -2,7 +2,6 @@ from django.contrib.auth.context_processors import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
 from authapp.forms import ShopUserLoginForm
 
 
@@ -21,7 +20,7 @@ def login(request):
         "title": title,
         "login_form": login_form,
     }
-    return render(request, 'authapp/login', context)
+    return render(request, 'authapp/login', context=context)
 
 
 def logout(request):
