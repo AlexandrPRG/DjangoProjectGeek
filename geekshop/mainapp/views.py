@@ -20,6 +20,6 @@ def products(request):
     context = {
         "links_menu_products": links_menu_products,
         "title": 'каталог',
-        "object": Product.objects.get(id=2)
+        "object": Product.objects.all()
     }
     return render(request, 'mainapp/products.html', context=context)

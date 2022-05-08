@@ -44,5 +44,3 @@ class Command(BaseCommand):
         finally:
             ShopUser.objects.create_superuser('avadmin', 'mail@django.com', '1', age=23)
             print(f'{ShopUser.objects.all()=}')
-
-

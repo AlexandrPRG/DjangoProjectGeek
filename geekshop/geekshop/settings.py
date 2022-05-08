@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-# import os
+
 import os
 from pathlib import Path
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'authapp',
 ]
 
-AUTH_USER_MODEL = "authapp.ShopUser"    #'authapp.models.ShopUser'
+AUTH_USER_MODEL = "authapp.ShopUser"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
