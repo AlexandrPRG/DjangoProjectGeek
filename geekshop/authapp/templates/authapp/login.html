@@ -9,5 +9,8 @@
     {{ login_form }}
     <button type="submit" class="btn btn-primary">Войти</button>
 </form>
+<button class="btn btn-round form-control last">
+    <a href="{% url 'index' %}" class="">на главную</a>
+</button>
     <a href="{% url 'auth:register' %}">Регистрация</a>
 {% endblock %}

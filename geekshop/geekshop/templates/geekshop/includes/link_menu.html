@@ -7,7 +7,7 @@
             {% if user.is_authenticated %}
                 {% if user.first_name != None %}
         <li>
-        <a href="{# url 'auth:edit' #}">{{ user.first_name|default:'first' }}</a>
+        <a href="{% url 'auth:edit' %}">{{ user.first_name|default:'first' }}</a>
         </li>
                 {% else %}
         <li>
