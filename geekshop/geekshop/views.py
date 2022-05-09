@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 # from ..mainapp.models import Product
 # from geekshop.mainapp.models import Product
 # from ..mainapp.models import *
@@ -13,6 +14,7 @@ def index(request):
 
     }
     return render(request, 'geekshop/index.html', context)
+
 
 def contacts(request):
     return render(request, 'geekshop/contact.html')
