@@ -9,7 +9,7 @@ def product(request, pk):
 
 def products(request, pk=None):
     title = 'каталог'
-    links_menu_products = [str(name)[4:] for name in ProductCategory.objects.all()]
+    links_menu_products = ProductCategory.objects.all()
     if pk is not None:
         if pk == 0:
             products = Product.objects.all().order_by('price')
@@ -17,13 +17,14 @@ def products(request, pk=None):
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.all().filter(category__pk=pk).order_by('price')
+            title = title + f': {ProductCategory.objects.get(pk=pk).name}'
         context = {
             "title": title,
             "links_menu_products": links_menu_products,
             "category": category,
             "products": products,
-        }
-        return render(request, 'mainapp/products.html')
+            }
+        return render(request, 'mainapp/products_list.html')
     same_products = Product.objects.all()[3:5]
     context = {
         "links_menu_products": links_menu_products,
