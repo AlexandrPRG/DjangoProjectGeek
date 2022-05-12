@@ -1,8 +1,4 @@
 from django.shortcuts import render
-
-# from ..mainapp.models import Product
-# from geekshop.mainapp.models import Product
-# from ..mainapp.models import *
 from mainapp.models import Product
 
 
@@ -13,6 +9,8 @@ def index(request):
         'products': product,
 
     }
+    print(f'{request=}')
+    print(render(request, 'geekshop/index.html', context))
     return render(request, 'geekshop/index.html', context)
 
 
