@@ -1,9 +1,14 @@
+{% load static %}
 <div class="header clearfix">
     <a href="{% url 'index' %}" class="logo"></a>
     <ul class="menu">
-        <li><a href="{% url 'index' %}" class="active">домой</a></li>
-        <li><a href="{% url 'products:index' %}">продукты</a></li>
-        <li><a href="{% url 'contacts' %}">контакты</a></li>
+        <li><a href="{% url 'index' %}"
+               class="{% if request.resolver_match.route == '' %}active{% endif %}">домой</a></li>
+        <li><a href="{% url 'products:index' %}"
+                class="{% if request.resolver_match.route == 'products/' %}active{% endif %}">продукты</a></li>
+        <li><a href="{% url 'contacts' %}"
+                class="{% if request.resolver_match.route == 'contacts/' %}active{% endif %}">контакты</a></li>
+
             {% if user.is_authenticated %}
                 {% if user.first_name != None %}
         <li>
@@ -22,6 +27,11 @@
         <a href="{% url 'auth:login' %}">войти</a>
             {% endif %}
         </li>
-    </ul>
-    <a href="#" class="search"></a>
-</div>
+   </ul>
+            <a href="#" class="search"></a>
+<!--        <li>-->
+            <a href="{#% url 'basket:wiew' %#}" class="basket">
+            <span>{% if basket %}{{basket|length }} {% endif %}</span>
+            </a>
+<!--        </li>-->
+ </div>

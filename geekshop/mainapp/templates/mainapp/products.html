@@ -14,17 +14,7 @@
     </div>
 
     <div class="details">
-        <div class="links clearfix">
-            <ul class="links-menu">
-                {% for link in links_menu_products %}
-                <li><a href="#" class="active">{{ link }}</a></li>
-                {% endfor %}
-                <!--					<li><a href="#">дом</a></li>
-                                    <li><a href="#">офис</a></li>
-                                    <li><a href="#">модерн</a></li>
-                                    <li><a href="#">классика</a></li> -->
-            </ul>
-        </div>
+        {% include 'mainapp/includes/link_menu_categories.html' %}
 
         <div class="details-products">
             <div class="details-slider">
@@ -76,18 +66,18 @@
             </div>
             <div class="related-products clearfix">
                 {% include 'geekshop/includes/short_list_products.html' %}
-                <!--
-                                    {% for product in products %}
-                                    <div class="block">
-                                        <a href="#"><img src="/media/{{ product.image }}" alt="">
-                                            <div class="text">
-                                                <img src="img/icon-hover.png" alt="img">
-                                                <h4>{{ product.name }}</h4>
-                                                <p>{{ product.descriptioin }}</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    {% endfor %}-->
+            </div>
+                    {% for product in same_products %}
+                    <div class="block">
+                        <a href="#"><img src="/media/{{ product.image }}" alt="">
+                            <div class="text">
+                                <img src="{% static 'geekshop/img/icon-hover.png' %}" alt="img">
+                                <h4>{{ product.name }}</h4>
+                                <p>{{ product.descriptioin }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
                 <div class="block">
                     <a href="#"><img src="img/product-31.jpg" alt="">
                         <div class="text">
