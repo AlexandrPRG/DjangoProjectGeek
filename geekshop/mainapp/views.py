@@ -24,7 +24,7 @@ def products(request, pk=None):
             "category": category,
             "products": products,
             }
-        return render(request, 'mainapp/products_list.html')
+        return render(request, 'mainapp/products_list.html', context)
     same_products = Product.objects.all()[3:5]
     context = {
         "links_menu_products": links_menu_products,

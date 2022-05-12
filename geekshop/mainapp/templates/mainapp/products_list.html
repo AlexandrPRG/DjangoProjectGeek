@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Каталог</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" href="{% static 'geekshop/style.css' %}">
     <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css">
 </head>
@@ -13,6 +13,7 @@
         {% include 'geekshop/includes/link_menu.html' %}
     </div>
     <div class="details">
+
         {% include 'mainapp/includes/link_menu_categories.html' %}
         <div class="product_list">
             <div class="title clearfix">
