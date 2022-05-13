@@ -10,13 +10,14 @@
 <body>
 <div class="container">
     <div class="slider">
-        {% include 'geekshop/includes/link_menu.html' %}
-        <div class="text-slider">
-            <h3 class="green">тенденции </h3>
-            <h3 class="big"> удобные стулья</h3>
-            <p>Новый уровень комфорта. Отличные характеристики.</p>
-            <p>{{ now|date:"H:i:s:u - D d m Y" }}</p>
-            <a href="#" class="button-order">заказать <img src="img/arrow.png" alt=""></a>
+    {% include 'geekshop/includes/link_menu.html' %}
+    {% include 'mainapp/includes/hot_product.html' %}
+ <div class="text-slider">
+<!--            <h3 class="green">тенденции </h3>-->
+<!--            <h3 class="big"> удобные стулья</h3>-->
+<!--            <p>Новый уровень комфорта. Отличные характеристики.</p>-->
+<!--            <p>{{ now|date:"H:i:s:u - D d m Y" }}</p>-->
+<!--            <a href="#" class="button-order">заказать <img src="img/arrow.png" alt=""></a>-->
         </div>
         <div class="navi">
             <a href="#"></a><a href="#"></a><a href="#"></a>
