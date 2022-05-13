@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from basketapp.models import Basket
 from mainapp.models import Product
+from mainapp.views import get_hot_product
 
 
 def index(request):
@@ -13,6 +14,7 @@ def index(request):
         'title': 'главная',
         'products': product,
         'basket': basket,
+        'hot_product': get_hot_product(),
     }
     return render(request, 'geekshop/index.html', context)
 
