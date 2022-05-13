@@ -7,8 +7,15 @@ from .models import Product, ProductCategory
 
 
 def product(request, pk):
-    print(pk)
-    return render(request)
+    title = str(Product.name)
+    product = Product.objects.get(pk=pk)
+    links_menu_products = ProductCategory.objects.all()
+    context = {
+        title: title,
+        product: product,
+        links_menu_products: links_menu_products,
+        }
+    return render(request, 'mainapp/product.html', context)
 
 
 def get_basket(user):

@@ -38,7 +38,7 @@
                      name="{{ item.pk }}"
                      min="0"
                      value="{{ item.product.quantity }}&nbspшт"></td>
-          <td>{{ item.cost }}&nbspруб</td>
+          <td>{{ item.product_cost }}&nbspруб</td>
           <td><button class="btn btn-round"
                       <a href="{% url 'basket:remove' item.pk %}"
                          class="">
