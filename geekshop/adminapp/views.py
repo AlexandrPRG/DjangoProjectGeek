@@ -13,7 +13,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-# @user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def users(request):
     title = 'админка/пользователи'
 
@@ -134,9 +134,7 @@ class UserDeleteView(DeleteView):
 @user_passes_test(lambda u: u.is_superuser)
 def categories(request):
     title = 'админка/категории'
-
     categories_list = ProductCategory.objects.all()
-
     context = {
         'title': title,
         'objects': categories_list
@@ -145,7 +143,7 @@ def categories(request):
     return render(request, 'adminapp/categories.html', context)
 
 
-@user_passes_test(lambda u: u.is_superuser)
+# @user_passes_test(lambda u: u.is_superuser)
 def category_create(request):
     title = 'категории/создание'
 
@@ -210,7 +208,6 @@ def category_delete(request, pk):
 @user_passes_test(lambda u: u.is_superuser)
 def products(request, pk):
     title = 'админка/продукты'
-
     category = get_object_or_404(ProductCategory, pk=pk)
     products_list = Product.objects.filter(category__pk=pk).order_by('name')
 
@@ -219,7 +216,6 @@ def products(request, pk):
         'category': category,
         'objects': products_list
     }
-
     return render(request, 'adminapp/products.html', context)
 
 
@@ -312,3 +308,5 @@ def user_update(request):
 
 def user_delete(request):
     pass
+
+
