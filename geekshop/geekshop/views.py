@@ -14,7 +14,7 @@ def index(request):
         'title': 'главная',
         'products': product,
         'basket': basket,
-        'hot_product': get_hot_product,
+        'hot_product': get_hot_product(),
     }
     return render(request, 'geekshop/index.html', context)
 

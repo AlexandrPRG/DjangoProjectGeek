@@ -45,7 +45,8 @@
                                 style="opacity: 0.5; text-decoration: line-through;"
                                 {% endif %}>
                                 <td>
-                                    <img src="/media/{{ item.image }}">
+                                    <img src="/media/{{ item.image }}"
+                                    alt="{{ item.name }}">
                                 </td>
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.short_desc }}</td>
