@@ -2,3 +2,8 @@
 geekshop/mainapp/__pycache__/
 
 geekshop/geekshop/__pycache__/
+mainapp/productKLK.html
+/geekshop/mainapp/migrations/
+/geekshop/basketapp/migrations/
+/geekshop/authapp/migrations/
+/geekshop/adminapp/migrations/
