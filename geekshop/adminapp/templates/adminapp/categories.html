@@ -48,7 +48,7 @@
                                     Товары
                                 </a>
                             </td>
-                            <td><a {% if item.is_active %}
+                            <td><a {% if not item.is_active %}
                                    class="invisible"
                                    {% endif %}
                                    href="{% url 'admin_stuff:category_delete' pk=item.id %}">
