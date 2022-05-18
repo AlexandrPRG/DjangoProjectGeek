@@ -110,18 +110,18 @@ def user_delete(request, pk):
     }
     return render(request, 'adminapp/user_delete.html', context)
 
-class UserDeleteView(DeleteView):
-    model = ShopUser
-    template_name = 'adminapp/user_delete.html'
-    success_url = reverse_lazy('admin_stuff:users')
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-
-        return HttpResponseRedirect(self.get_success_url())
-
+# class UserDeleteView(DeleteView):
+#     model = ShopUser
+#     template_name = 'adminapp/user_delete.html'
+#     success_url = reverse_lazy('admin_stuff:users')
+#
+#     def delete(self, request, *args, **kwargs):
+#         self.object = self.get_object()
+#         self.object.is_active = False
+#         self.object.save()
+#
+#         return HttpResponseRedirect(self.get_success_url())
+#
 
 @user_passes_test(lambda u: u.is_superuser)
 def categories(request):
@@ -288,13 +288,3 @@ def product_delete(request, pk):
     }
 
     return render(request, 'adminapp/product_delete.html', context)
-
-@user_passes_test(lambda u: u.is_superuser)
-def user_update(request):
-    pass
-
-@user_passes_test(lambda u: u.is_superuser)
-def user_delete(request):
-    pass
-
-
