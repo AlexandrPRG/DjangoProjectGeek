@@ -135,24 +135,21 @@ def categories(request):
     return render(request, 'adminapp/categories.html', context)
 
 
-# @user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def category_create(request):
-    title = 'категории/создание'
+    title = 'создание категории'
 
     if request.method == 'POST':
         edit_form = ProductCategoryEditForm(request.POST, request.FILES)
-
         if edit_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('admin_stuff:categories'))
     else:
         edit_form = ProductCategoryEditForm()
-
     context = {
         'title': title,
         'update_form': edit_form
     }
-
     return render(request, 'adminapp/category_update.html', context)
 
 
