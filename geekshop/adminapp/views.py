@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse, reverse_lazy
 
 # from adminapp.forms import ShopUserAdminEditForm, ProductCategoryEditForm, ProductEditForm
-from adminapp.forms import ShopUserAdminEditForm
+from adminapp.forms import ShopUserAdminEditForm, ProductCategoryEditForm
 from authapp.forms import ShopUserRegisterForm
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
@@ -158,37 +158,30 @@ def category_create(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_update(request, pk):
-    title = 'категории/редактирование'
-
+    title = 'редактирование категории'
     edit_category = get_object_or_404(ProductCategory, pk=pk)
     if request.method == 'POST':
         edit_form = ProductCategoryEditForm(request.POST, request.FILES, instance=edit_category)
-
         if edit_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('admin_stuff:category_update', args=[edit_category.pk]))
     else:
         edit_form = ProductCategoryEditForm(instance=edit_category)
-
     context = {
         'title': title,
         'update_form': edit_form
     }
-
     return render(request, 'adminapp/category_update.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_delete(request, pk):
-    title = 'категории/удалить'
-
+    title = 'удаление категории'
     category_to_delete = get_object_or_404(ProductCategory, pk=pk)
-
     if request.method == 'POST':
         category_to_delete.is_active = False
         category_to_delete.save()
         return HttpResponseRedirect(reverse('admin_stuff:categories'))
-
     context = {
         'title': title,
         'category_to_delete': category_to_delete
