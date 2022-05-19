@@ -1,0 +1,43 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{#% load my_tags %#}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">{{ title|title }}</h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                {{ object.name }}
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="card"
+                         style="width: 18rem">
+                        <img src="/media/{{object.image }}"
+                             alt="image {{object.name }}"
+                             class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-body">{{object.name}}</h5>
+                            <h6 class="card-text>{{object.category}}"></h6>
+                            <p class="card-text>">{{object.short_descript}}</p>
+                            <p class="card-text>">{{object.quantity}}</p>
+                            <p class="card-text>">{{object.price}}</p>
+                            <p class="card-text>">{{object.is_active}}</p>
+                            <p class="card-text>">{{object.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'admin_stuff:products' category.pk %}">
+                    <button class="btn btn-success">
+                        К списку продуктов
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
