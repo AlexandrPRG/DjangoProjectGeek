@@ -1,19 +1,22 @@
 from django.shortcuts import render
 
 from basketapp.models import Basket
-from geekshop.models import Index
+# from geekshop.models import Index
 from mainapp.models import Product
 from mainapp.views import get_hot_product
 from django.views.generic.base import TemplateView
 
 class IndexTemplateView(TemplateView):
-    model = Index
-    template_name = 'geekshop/index'
+    # model = Index
+    template_name = 'geekshop/index.html'
     # context_object_name =
 
     def get_context_data(self, **kwargs):
-        context = super(IndexListView, self).get_context_data(**kwargs)
+        context = super(IndexTemplateView, self).get_context_data(**kwargs)
         context['Basket'] = Basket
+        context['Product'] = Product
+        context['hot_product'] = get_hot_product()
+
         return context
 
 
