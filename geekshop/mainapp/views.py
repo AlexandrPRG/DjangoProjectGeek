@@ -1,7 +1,7 @@
 import random
 
 from django.shortcuts import render, get_object_or_404
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from basketapp.models import Basket
 from .models import Product, ProductCategory
 from django.contrib.auth.decorators import login_required
@@ -37,18 +37,24 @@ def get_hot_product():
 
 
 def get_same_products(hot_product):
-    same_products = Product.objects.filter(
-        category=hot_product.category).exclude(
-        pk=hot_product.pk).order_by(
-        'price'
-        )
+    same_products = Product.objects\
+                        .filter(category=hot_product.category)\
+                        .exclude(pk=hot_product.pk)\
+                        .order_by('price')
     return same_products
 
-def products(request, pk=None):
+def products(request, pk=None, page=1):
     title = 'каталог'
     links_menu_products = ProductCategory.objects.all()
     basket = get_basket(request.user)
-
+    products = Product.objects.all().order_by('price')
+    paginator = Paginator(products, 3)
+    try:
+        products_paginator = paginator.page(page)
+    except PageNotAnInteger:
+        products_paginator = paginator.page(1)
+    except EmptyPage:
+        products_paginator = paginator.page(paginator.num_pages)
     if pk is not None:
         if pk == 0:
             products = Product.objects.all().order_by('price')
@@ -61,17 +67,19 @@ def products(request, pk=None):
             "title": title,
             "links_menu_products": links_menu_products,
             "category": category,
-            "products": products,
+            "products": products_paginator,
             'basket': basket,
             }
         return render(request, 'mainapp/products_list.html', context)
     hot_product = get_hot_product()
     same_products = get_same_products(hot_product)
+
     context = {
         "links_menu_products": links_menu_products,
         "title": title,
         "same_products": same_products,
         'hot_product': hot_product,
         'basket': basket,
+        'products': products_paginator,
         }
     return render(request, 'mainapp/products.html', context=context)

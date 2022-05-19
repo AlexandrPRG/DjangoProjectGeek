@@ -131,7 +131,6 @@ def categories(request):
         'title': title,
         'objects': categories_list
     }
-
     return render(request, 'adminapp/categories.html', context)
 
 
