@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="{% static 'geekshop/style.css' %}">
-    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet"
+          href="{% static 'geekshop/style.css' %}">
+    <link rel="stylesheet"
+          href="fonts/font-awesome/css/font-awesome.css">
 </head>
 <body>
 <div class="container">
@@ -13,32 +15,45 @@
         {% include 'geekshop/includes/link_menu.html' %}
     </div>
     <div class="details">
-
         {% include 'mainapp/includes/link_menu_categories.html' %}
         <div class="product_list">
             <div class="title clearfix">
                 <h2>Категория: "{{ category.name|title }}"</h2>
             </div>
-        {% for product in products %}
+            {% for product in products %}
             <div class="block">
-                <a href="#"><img src="/media/{{ product.image }}" alt="">
+                <a href="{% url 'mainapp:product' product.pk %}">
+                    <img src="/media/{{ product.image }}"
+                         alt="">
                     <div class="text">
-                        <img src="static/geekshop/img/icon-hover.png" alt="img">
+                        <img src="static/geekshop/img/icon-hover.png"
+                             alt="img">
                         <h4>{{ product.name }}</h4>
                         <p>{{ product.short_descript }}</p>
                     </div>
                 </a>
             </div>
             {% endfor %}
+            <div class="paginator">
+                {% if products.has_previous %}
+                    <a href="{% url 'products:page' category.pk products.previous_page_number %}">
+                        <<<
+                    </a>
+                {% endif %}
+                <span class="current">
+                    страница {{ products.number }} из
+                    {{products.paginator.num_pages}}
+                </span>
+                {% if products.has_next %}
+                    <a href="{% url 'products:page' category.pk products.next_page_number %}">
+                        >>>
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </div>
-    </div>
-
-    <div class="clr">
-
 </div>
-
+<div class="clr"></div>
 {% include 'geekshop/includes/link_footer.html' %}
-
 </body>
 </html>

@@ -9,11 +9,12 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1"></i>
-                Категории
+                Продукты
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <form class="form-horizontal"
+                    <form action="{% url 'admin_stuff:products' %}"
+                          class="form-horizontal"
                           method="post"
                           enctype="multipart/form-data">
                         {% csrf_token %}
@@ -25,9 +26,9 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="{% url 'admin_stuff:categories' %}">
+                <a href="{% url 'admin_stuff:products' category.pk %}">
                     <button class="btn btn-success">
-                        К списку категорий
+                        К списку продуктов
                     </button>
                 </a>
             </div>
