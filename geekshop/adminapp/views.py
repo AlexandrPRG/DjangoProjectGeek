@@ -14,18 +14,17 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def users(request):
-    title = 'админка/пользователи'
-
-    users_list = ShopUser.objects.all().order_by('-is_active', '-is_superuser', '-is_staff', 'username')
-
-    context = {
-        'title': title,
-        'object_list': users_list
-    }
-
-    return render(request, 'adminapp/users.html', context)
+# @user_passes_test(lambda u: u.is_superuser)
+# def users(request):
+#     title = 'админка/пользователи'
+#
+#     users_list = ShopUser.objects.all().order_by('-is_active', '-is_superuser', '-is_staff', 'username')
+#
+#     context = {
+#         'title': title,
+#         'object_list': users_list
+#     }
+#     return render(request, 'adminapp/users.html', context)
 
 
 class UsersListView(LoginRequiredMixin, ListView):
@@ -36,7 +35,6 @@ class UsersListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(UsersListView, self).get_context_data(**kwargs)
         context['title'] = 'админка/пользователи'
-
         return context
 
 

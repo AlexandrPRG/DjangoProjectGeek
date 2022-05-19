@@ -3,7 +3,10 @@ from django.shortcuts import render
 from basketapp.models import Basket
 from mainapp.models import Product
 from mainapp.views import get_hot_product
+from django.views.generic.list import ListView
 
+class IndexListView(ListView):
+    model = Product
 
 def index(request):
     product = Product.objects.all()[:4]
