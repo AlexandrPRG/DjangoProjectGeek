@@ -16,7 +16,6 @@ class IndexTemplateView(TemplateView):
         context['Basket'] = Basket
         context['Product'] = Product
         context['hot_product'] = get_hot_product()
-
         return context
 
 

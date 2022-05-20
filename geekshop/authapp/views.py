@@ -1,9 +1,29 @@
 from django.contrib import auth
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
+from geekshop import settings
 
+
+def send_verify_mail(user):
+    verify_link = reverse('auth:verify', args=[user.email, user.activation_key])
+    title = f'Подтверждение учетной записи пользователя {user.username}'
+    message = f'Для подтверждения учетной записи {user.username} ' \
+              f'на портале {settings.DOMAIN_NAME} перейдите по ссылке:' \
+              f'{settings.DOMAIN_NAME}{verify_link}'
+    return send_mail(
+        subject=title,
+        message=message,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[user.email],
+        fail_silently=False
+    )
+
+
+def verify(request, email, activation_key):
+    pass
 
 def login(request):
     title = 'вход'
