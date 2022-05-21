@@ -35,6 +35,8 @@ urlpatterns = \
     path('products/', include('mainapp.urls', namespace='products')),
     path('basket/', include('basketapp.urls', namespace='basket')),
     path('admin_stuff/', include('adminapp.urls', namespace='admin_stuff')),
+
+    path('', include('social_django.urls', namespace='social')),
     ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
