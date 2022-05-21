@@ -3,3 +3,5 @@ geekshop/mainapp/__pycache__/
 
 geekshop/geekshop/__pycache__/
 mainapp/productKLK.html
+
+bd_update.py
