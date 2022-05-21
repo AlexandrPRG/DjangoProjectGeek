@@ -13,22 +13,22 @@ def product(request, pk):
     links_menu_products = ProductCategory.objects.all()
     same_products = Product.objects.filter(category__pk=Product.objects.get(pk=pk).category.pk)
     # same_products = get_same_products(get_hot_product())
-    basket = get_basket(request.user)
+    # basket = get_basket(request.user)
     context = {
         'title': title,
         'product': product,
         'links_menu_products': links_menu_products,
         'same_products': same_products,
-        'basket': basket,
+        # 'basket': basket,
         }
     return render(request, 'mainapp/product.html', context)
 
 
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    else:
-        return []
+# def get_basket(user):
+#     if user.is_authenticated:
+#         return Basket.objects.filter(user=user)
+#     else:
+#         return []
 
 
 def get_hot_product():
@@ -46,7 +46,7 @@ def get_same_products(hot_product):
 def products(request, pk=None, page=1):
     title = 'каталог'
     links_menu_products = ProductCategory.objects.all()
-    basket = get_basket(request.user)
+    # basket = get_basket(request.user)
     products = Product.objects.all().order_by('price')
     paginator = Paginator(products, 3)
     try:
@@ -68,7 +68,7 @@ def products(request, pk=None, page=1):
             "links_menu_products": links_menu_products,
             "category": category,
             "products": products_paginator,
-            'basket': basket,
+            # 'basket': basket,
             }
         return render(request, 'mainapp/products_list.html', context)
     hot_product = get_hot_product()
@@ -79,7 +79,7 @@ def products(request, pk=None, page=1):
         "title": title,
         "same_products": same_products,
         'hot_product': hot_product,
-        'basket': basket,
+        # 'basket': basket,
         'products': products_paginator,
         }
     return render(request, 'mainapp/products.html', context=context)
