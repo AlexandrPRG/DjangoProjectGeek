@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
+from authapp.models import ShopUser
 from geekshop import settings
 
 
@@ -23,7 +24,19 @@ def send_verify_mail(user):
 
 
 def verify(request, email, activation_key):
-    pass
+    try:
+        user = ShopUser.objects.get(email=email)
+        if user.activation_key == activation_key and not user.activation_key_expired:
+            user.is_active = True
+            user.save()
+            auth.login(request, user)
+            return render(request, 'authapp/verification.html')
+        else:
+            print(f'activation user {user}')
+    except Exception as e:
+        print(f'error activation user: {e.args}')
+        return HttpResponseRedirect(reverse('index'))
+
 
 def login(request):
     title = 'вход'
