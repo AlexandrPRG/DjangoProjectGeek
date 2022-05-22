@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block content %}
-<form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
+<form class="form-horizontal"
+      action="{% url 'auth:login' %}"
+      method="post">
     {% csrf_token %}
     {% if next %}
     <input type="hidden"
@@ -10,10 +12,21 @@
            value="{{ next }}">
     {% endif %}
     {{ login_form }}
-    <button type="submit" class="btn btn-primary">Войти</button>
+    <button type="submit"
+            class="btn btn-primary">
+        Войти
+    </button>
 </form>
 <button class="btn btn-round form-control last">
-    <a href="{% url 'index' %}" class="">на главную</a>
+    <a href="{% url 'index' %}"
+       class="">
+        на главную
+    </a><br><br>
+    <a href="{% url 'auth:register' %}">
+        Зарегистрироваться
+    </a><br><br>
+    <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">
+        Вход через ВКонтакте
+    </a>
 </button>
-    <a href="{% url 'auth:register' %}">Регистрация</a>
 {% endblock %}
