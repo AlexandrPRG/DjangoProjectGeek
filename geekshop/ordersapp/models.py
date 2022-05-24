@@ -32,15 +32,16 @@ class Order(models.Model):
     status = models.CharField(
         verbose_name='статус',
         max_length=3,
-        choices=FORMING,
-
+        choices=ORDER_STATUSES_CHOICES,
+        default=FORMING,
     )
     is_active = models.BooleanField(
         verbose_name='активен',
         default=True,
     )
+
     class Meta:
-        ordering = ('created')
+        ordering = ('created',)
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
 
@@ -64,7 +65,7 @@ class Order(models.Model):
             item.product.quantity += item.quantity
             item.product.save()
 
-class Orderitem(models.Model):
+class OrderItem(models.Model):
     order = models.ForeignKey(
         Order,
         related_name='orderitems',
