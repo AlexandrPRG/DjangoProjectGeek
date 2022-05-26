@@ -4,9 +4,10 @@
        class="logo">
     </a>
     <ul class="menu">
-        <li><a href="{% url 'index' %}"
+        <li>
+            <a href="{% url 'index' %}"
                class="{% if request.resolver_match.route == '' %}active{% endif %}">
-            домой
+                домой
             </a>
         </li>
         <li>
@@ -34,7 +35,23 @@
                         {{ user.username|default:'user' }}
                     </a>
                 </li>
+
             {% endif %}
+                    <div class="dropdown">
+              <button
+                class="btn btn-primary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false">
+                Профиль
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="{% url 'orders:orders_list' %}">Заказы</a></li>
+                <li><a class="dropdown-item" href="#">Aдминка</a></li>
+                <li><a class="dropdown-item" href="#">Корзина</a></li>
+              </ul>
+            </div>
         {% endif %}
         <li>
         {% if user.is_authenticated %}
