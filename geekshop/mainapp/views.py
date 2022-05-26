@@ -17,6 +17,7 @@ def product(request, pk):
     context = {
         'title': title,
         'product': product,
+        'type': type(product),
         'links_menu_products': links_menu_products,
         'same_products': same_products,
         # 'basket': basket,
