@@ -1,5 +1,9 @@
 {% extends "geekshop/base.html" %}
 {% load static %}
+{% block css %}
+    <script src="{%static 'ordersapp/js/script.js' %}"></script>
+{% endblock css %}
+
 {% block content %}
     {% include 'geekshop/includes/link_menu.html' %}
     {% include 'ordersapp/includes/inc_order_summary.html' %}
