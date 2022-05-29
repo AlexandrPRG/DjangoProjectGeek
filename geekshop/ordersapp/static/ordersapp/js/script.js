@@ -89,7 +89,7 @@ window.onload = function () {
                                             (orderitem_num + 1) +
                                             ')'
                                     );
-                            current_tr.find(selector: 'tr:eq(2)').html(price_html);
+                            current_tr.find(selector: 'td:eq(2)').html(price_html);
                             if(isNaN(current_tr.find(selector: 'input[type="number"]').val())) {
                                 current_tr.find(selector: 'input[type="number"]').val(value: 0);
                             }
