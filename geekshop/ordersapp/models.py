@@ -41,7 +41,7 @@ class Order(models.Model):
     )
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created',)
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
 
@@ -50,7 +50,7 @@ class Order(models.Model):
 
     def get_total_quantity(self):
         items = self.orderitems.select_related()
-        return sum(list(map(lambda x: (x.quantity, items))))
+        return sum(list(map(lambda x: x.quantity, items)))
 
     def get_product_type_quantity(self):
         items = self.orderitems.select_related()
@@ -58,14 +58,24 @@ class Order(models.Model):
 
     def get_total_cost(self):
         items = self.orderitems.select_related()
-        return sum(list(map(lambda x: (x.quantity * x.product.price, items))))
+        return sum(list(map(lambda x: x.quantity * x.product.price, items)))
 
     def delete(self):
         for item in self.orderitems.select_related():
             item.product.quantity += item.quantity
             item.product.save()
 
+
+class OrderItemQuerySet(models.QuerySet):
+    def delete(self, *args, **kwargs):
+        for object in self:
+            object.product.quantity += object.quantity
+            object.product.save()
+        super(OrderItemQuerySet, self).delete(*args, **kwargs)
+
+
 class OrderItem(models.Model):
+    objects = OrderItemQuerySet.as_manager()
     order = models.ForeignKey(
         Order,
         related_name='orderitems',
@@ -80,6 +90,10 @@ class OrderItem(models.Model):
         verbose_name='количество',
         default=0
     )
+
+    @staticmethod
+    def get_item(pk):
+        return OrderItem.objects.filter(pk=pk).first()
 
     def get_product_cost(self):
         return self.product.price * self.quantity
