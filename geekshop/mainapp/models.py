@@ -48,7 +48,9 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.pk} - {self.category.name}'
 
-
+    @staticmethod
+    def get_items():
+        return Product.objects.filter(is_active=True).order_by('category', 'name')
 
 
 # class Productcategory(models.Model):
