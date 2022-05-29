@@ -3,7 +3,7 @@
 <div class="tab-content">
     {% for product in products %}
     <div class="block">
-        <a href="{% url 'products:product' hot_product.pk %}">
+        <a href="{% url 'products:detail' hot_product.pk %}">
             <img src="/media/{{ product.image }}"
                  alt="">
             <div class="text">
