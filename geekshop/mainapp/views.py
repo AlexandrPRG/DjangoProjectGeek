@@ -34,7 +34,8 @@ def product(request, pk):
 
 def get_hot_product():
     products = Product.objects.all()
-    return random.sample(list(products), 1)[0]
+    if products:
+        return random.sample(list(products), 1)[0]
 
 
 def get_same_products(hot_product):
