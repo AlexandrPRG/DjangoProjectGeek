@@ -127,23 +127,23 @@ SOCIAL_AUTH_PIPELINE = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'geekshop',
-#         'USER': 'postgres',
-#         # 'PASSWORD': 'password',
-#         # 'HOST': 'localhost',
-#         # 'PORT': '',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'geekshop',
+        'USER': 'postgres',
+        # 'PASSWORD': 'password',
+        # 'HOST': 'localhost',
+        # 'PORT': '',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -183,7 +183,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'geekshop', 'static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'geekshop', 'static')]
 
 MEDIA_URL = '/media/'
 
@@ -203,4 +203,4 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 EMAIL_USE_SSL = False
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
