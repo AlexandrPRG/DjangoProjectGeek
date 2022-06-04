@@ -1,0 +1,14 @@
+/.idea
+
+geekshop/adminapp/__pycache__/
+geekshop/authapp/__pycache__/
+geekshop/basketapp/__pycache__/
+geekshop/geekshop/__pycache__/
+geekshop/mainapp/__pycache__/
+geekshop/ordersapp/__pycache__/
+
+geekshop/.env
+
+bd_update.py
+/env/
+/env10/
