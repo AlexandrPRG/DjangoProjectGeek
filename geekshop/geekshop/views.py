@@ -20,7 +20,9 @@ class IndexTemplateView(TemplateView):
 
 
 def index(request):
-    product = Product.objects.all()[:4]
+    product = Product.objects\
+            .filter(is_active=True, category__is_active=True)\
+            .select_related('category')[:4]
     # basket = []
     # if request.user.is_authenticated:
     #     basket = Basket.objects.filter(user=request.user)

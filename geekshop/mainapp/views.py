@@ -25,11 +25,11 @@ def product(request, pk):
     return render(request, 'mainapp/product.html', context)
 
 
-# def get_basket(user):
-#     if user.is_authenticated:
-#         return Basket.objects.filter(user=user)
-#     else:
-#         return []
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
 
 
 def get_hot_product():
@@ -39,9 +39,9 @@ def get_hot_product():
 
 def get_same_products(hot_product):
     same_products = Product.objects\
-                        .filter(category=hot_product.category)\
-                        .exclude(pk=hot_product.pk)\
-                        .order_by('price')
+        .filter(category=hot_product.category)\
+        .exclude(pk=hot_product.pk)\
+        .order_by('price')
     return same_products
 
 def products(request, pk=None, page=1):
