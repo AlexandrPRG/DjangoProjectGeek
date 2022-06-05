@@ -8,6 +8,7 @@ from .models import Product, ProductCategory
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.conf import settings
+from django.views.decorators.cache import cache_page, never_cache
 
 
 def get_links_menu():
@@ -21,6 +22,8 @@ def get_links_menu():
     else:
         return ProductCategory.objects.filter(is_active=True)
 
+
+@never_cache
 def product(request, pk):
     title = str(Product.objects.get(pk=pk).name)
     product = get_product(pk)
@@ -118,6 +121,8 @@ def get_same_products(hot_product):
         .order_by('price')
     return same_products
 
+
+@cache_page(3600)
 def products(request, pk=None, page=1):
     title = 'каталог'
     links_menu_products = get_links_menu()
