@@ -2,6 +2,7 @@ import random
 
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.utils.functional import cached_property
 from basketapp.models import Basket
 from .models import Product, ProductCategory
 from django.contrib.auth.decorators import login_required
