@@ -1,4 +1,5 @@
 from django.db import connection
+from django.db.models import F
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.http import HttpResponseRedirect
@@ -167,23 +168,42 @@ def category_create(request):
     }
     return render(request, 'adminapp/category_update.html', context)
 
+class ProductCategoryUpdateView(UpdateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_update.htnl'
+    success_url = reverse_lazy('admin_stuff/categories')
+    form_class = ProductCategoryEditForm
 
-@user_passes_test(lambda u: u.is_superuser)
-def category_update(request, pk):
-    title = 'редактирование категории'
-    edit_category = get_object_or_404(ProductCategory, pk=pk)
-    if request.method == 'POST':
-        edit_form = ProductCategoryEditForm(request.POST, request.FILES, instance=edit_category)
-        if edit_form.is_valid():
-            edit_form.save()
-            return HttpResponseRedirect(reverse('admin_stuff:category_update', args=[edit_category.pk]))
-    else:
-        edit_form = ProductCategoryEditForm(instance=edit_category)
-    context = {
-        'title': title,
-        'update_form': edit_form
-    }
-    return render(request, 'adminapp/category_update.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'категории/редактирование'
+        return context
+
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
+            discount = form.cleaned_data['discount']
+            if discount:
+                self.object.product_set \
+                    .update(price=F('price') * (1 - discount / 100))
+                db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
+        return super().form_valid(form)
+
+# @user_passes_test(lambda u: u.is_superuser)
+# def category_update(request, pk):
+#     title = 'редактирование категории'
+#     edit_category = get_object_or_404(ProductCategory, pk=pk)
+#     if request.method == 'POST':
+#         edit_form = ProductCategoryEditForm(request.POST, request.FILES, instance=edit_category)
+#         if edit_form.is_valid():
+#             edit_form.save()
+#             return HttpResponseRedirect(reverse('admin_stuff:category_update', args=[edit_category.pk]))
+#     else:
+#         edit_form = ProductCategoryEditForm(instance=edit_category)
+#     context = {
+#         'title': title,
+#         'update_form': edit_form
+#     }
+#     return render(request, 'adminapp/category_update.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
