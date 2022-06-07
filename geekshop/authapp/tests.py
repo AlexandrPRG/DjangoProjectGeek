@@ -35,3 +35,17 @@ class TestUserManagement(TestCase):
         response = self.client.get('/auth/login/')
         self.assertFalse(response.context['user'].is_anonimous)
         self.assertFalse(response.context['user'], self.user)
+
+    def test_basket_login_redirect(self):
+        response = self.client.get('/basket/')
+        self.assertEqual(response.url, '/auth/login/?next=/basket/')
+        self.assertEqual(response.status_code, 302)     #код редиректа
+
+        self.client.login(username='tarantino', password='geekshop')
+        response = self.client.get('/basket/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(list(response.context['basket']), [])
+        self.assertEqual(response.request['PATH_INFO'], '/basket/')
+        self.assertIn('Ваша корзина, Пользователь', response.content.decode())
+
+    def test_user_logout(self):
