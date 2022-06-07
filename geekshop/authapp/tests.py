@@ -90,3 +90,16 @@ class TestUserManagement(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.context['user'].is_anonymous)
 
+    def test_user_wrong_register(self):
+        new_user_data = {
+            'username': 'teen',
+            'first_name': 'Мэри',
+            'last_name': 'Поппинс',
+            'password1': 'geekbrains',
+            'password2': 'geekbrains',
+            'email': 'samuel@geekshop.local',
+            'age': '17'
+        }
+        response = self.client.post('/auth/register/', data=new_user_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertFormError(response, 'register_form', 'age', 'Вы слишком молоды!')
